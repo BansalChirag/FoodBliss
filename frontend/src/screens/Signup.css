@@ -1,0 +1,11 @@
+.loading-icon {
+    height: 100%;
+}
+
+.loading-icon:hover {
+    box-shadow: 0 5px 10px #4e4e4e33;
+}
+.loading-icon:disabled {
+    background: #9494949f;
+    cursor: not-allowed;
+}

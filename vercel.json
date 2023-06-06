@@ -1,0 +1,12 @@
+{
+    "buildCommand":"cd frontend && npm install --force && npm run build",
+    "outputDirectory":"frontend/build",
+    "framework":"create-react-app",
+    "rewrites":[
+        {
+            "source":"/backend/(.*)",
+            "destination":"/backend/app.js"
+        }
+    ]
+
+}

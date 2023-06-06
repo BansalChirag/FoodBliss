@@ -1,0 +1,66 @@
+.loading-wrapper {
+    position: relative;
+    margin: 4rem 0;
+    overflow: hidden;
+}
+.loading-wrapper .sine-rod {
+    height: 376px;
+    width: 10px;
+    background: #fff de;
+    box-shadow: 0 0 10px 10px #fff de;
+    position: absolute;
+    animation: loading 1s infinite alternate;
+    overflow: hidden;
+    transform: rotate(10deg);
+}
+.loading-wrapper .loading {
+    height: 376px;
+    width: 296px;
+    border: 1px solid #f2f2f2;
+    padding: 2rem;
+    display: grid;
+    grid-template-rows: 50% 20% 15% 15%;
+}
+.loading-wrapper .loading .img {
+    height: 100%;
+    width: 100%;
+    background: #a7a7a754;
+}
+.loading-wrapper .loading .title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+.loading-wrapper .loading .title span {
+    background: #a7a7a754;
+    display: block;
+}
+.loading-wrapper .loading .title span:first-child {
+    width: 80%;
+    height: 100%;
+    font-weight: 600;
+}
+.loading-wrapper .loading .title span:last-child {
+    width: 90%;
+    height: 50%;
+}
+.loading-wrapper .loading .rating {
+    margin: 1rem 0;
+    background: #a7a7a754;
+}
+.loading-wrapper .loading .offer {
+    width: 70%;
+    margin-bottom: 1rem;
+    background: #a7a7a754;
+}
+@keyframes loading {
+    from {
+        left: 0;
+   }
+    to {
+        left: 100%;
+   }
+}

@@ -1,0 +1,92 @@
+.card-wrapper {
+  background: #fff;
+  border: 1px solid #d3d3d3;
+  margin: 18px ;
+  height: 376px;
+  padding: 2rem;
+  position: relative;
+  width: 296px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-wrapper:hover {
+  border: 1px solid #d3d3d3;
+  box-shadow: 0 4px 7px 0 rgba(218, 220, 230, 0.6);
+  transform: translateY(-10px) scale(1.05);
+  
+}
+
+.card-wrapper .singleCard {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 50% 20% 15% 15%;
+}
+
+.card-wrapper .singleCard img {
+  height: 120px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.card-wrapper .singleCard .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.card-wrapper .singleCard .card-title {
+  font-size: 1.8rem;
+}
+
+.price-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.options {
+  background: #48c479;
+  color: #fff;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.3rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.add-btn button {
+  height: 50px;
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  border-radius: 3px;
+  background: #48c479;
+}
+
+.add-btn button:hover {
+  box-shadow: 0 2px 5px #a1a1a1c9;
+}
+
+.add-btn button:disabled {
+  background: #9494949f;
+  cursor: not-allowed;
+}
