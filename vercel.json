@@ -4,8 +4,8 @@
     "framework":"create-react-app",
     "rewrites":[
         {
-            "source":"/backend/(.*)",
-            "destination":"/backend/index.js"
+            "source":"backend/(.*)",
+            "destination":"backend/index.js"
         }
     ]
 
