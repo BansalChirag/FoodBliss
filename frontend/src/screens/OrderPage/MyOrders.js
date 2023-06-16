@@ -10,7 +10,7 @@ const MyOrders = () => {
   const [orderData, setOrderData] = useState([]);
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate('/menu');
+    navigate('/');
   };
 
   const fetchMyOrder = async () => {
