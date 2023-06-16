@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import styled from "styled-components";
-import { ReactComponent as LoadingIcon } from "../components/assets/loading.svg";
+import { ReactComponent as LoadingIcon } from "../../components/assets/loading.svg";
 import Swal from "sweetalert2";
 
 
@@ -116,7 +115,7 @@ const ResetPassword = () => {
       onSubmit: async (values) => {
         try {
           const response = await fetch(
-            `http://localhost:5000/api/auth/users/forget-password/${id}/${token}`,
+            `${process.env.REACT_APP_API_URL}/${id}/${token}`,
             {
               method: "POST",
               headers: {

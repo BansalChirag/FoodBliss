@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../components/NavBar';
-import PaddingTop from '../components/PaddingTop';
+import Navbar from '../../components/NavBar/NavBar';
+import PaddingTop from '../../components/paddingTop/PaddingTop';
 import './MyOrders.css';
 import { useNavigate } from 'react-router-dom';
+
+
 
 const MyOrders = () => {
   const [orderData, setOrderData] = useState([]);
@@ -13,7 +15,7 @@ const MyOrders = () => {
 
   const fetchMyOrder = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/auth/users/myOrders", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/myOrders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

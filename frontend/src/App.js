@@ -1,30 +1,30 @@
 import './App.css';
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import Menu from './screens/Menu';
-import Cart from './screens/Cart';
-import MyOrders from './screens/MyOrders';
-import Login from './screens/Login';
-import SignUp from './screens/SignUp';
-import ForgotPassword from './screens/ForgotPassword';
-import ResetPassword from './screens/ResetPassword';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import { CartProvider } from './context/context';
-import ErrorPage from './screens/ErrorPage';
-import Profile from './screens/Profile';
+import Menu from './screens/Menu/Menu';
+import SignUp from './screens/SignUp/SignUp';
+import Profile from './screens/Profile/Profile';
+import PageNotFound from './screens/PageNotfound/PageNotFound';
+import MyOrders from './screens/OrderPage/MyOrders';
+import Login from './screens/Login/Login';
+import ForgotPassword from './screens/ForgotPassword/ForgotPassword';
+import ResetPassword from './screens/ResetPassword/ResetPassword';
+import Cart from './screens/Cart/Cart';
+
 
 // Create a new component called AuthLayout
-const AuthLayout = ({ isLoggedIn, setIsLoggedIn, children }) => {
-  const location = useLocation();
+// const AuthLayout = ({ isLoggedIn, setIsLoggedIn, children }) => {
+//   const location = useLocation();
 
-  useEffect(() => {
-    setIsLoggedIn(!!localStorage.getItem('token'));
-  }, [location, setIsLoggedIn]);
+//   useEffect(() => {
+//     setIsLoggedIn(!!localStorage.getItem('token'));
+//   }, [location, setIsLoggedIn]);
 
-  return isLoggedIn ? <Profile /> : <ErrorPage />;
-};
+//   return isLoggedIn ? <Profile /> : <ErrorPage />;
+// };
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+  // const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
 
   return (
     <CartProvider>
@@ -40,9 +40,9 @@ function App() {
           <Route
             exact
             path="/profile"
-            element={<AuthLayout isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
+            element={<Profile/>}
           />
-          <Route path="/*" element={<ErrorPage />} />
+          <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </CartProvider>

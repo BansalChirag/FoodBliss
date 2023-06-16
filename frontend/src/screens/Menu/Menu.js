@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import Card from '../components/Card';
-import Navbar from '../components/NavBar';
-import foodItems from '../data/foodData';
-import foodCategory from '../data/foodCategory';
-import PaddingTop from '../components/PaddingTop';
+import Card from '../../components/Card/Card';
+import Navbar from '../../components/NavBar/NavBar';
+import foodItems from '../../data/foodData';
+import foodCategory from '../../data/foodCategory';
+import PaddingTop from '../../components/paddingTop/PaddingTop';
 import './Menu.css';
-import FloatingCart from '../components/FloatingCart';
-import Loading from '../components/Loading';
-
+import FloatingCart from '../../components/FloatingCart/FloatingCart';
+import Loading from '../../components/Loading/Loading';
 
 const Menu = () => {
   const [searchQuery, setSearchQuery] = useState('');

@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useUser } from "../context/context";
-
+import { useUser } from '../../context/context';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import './Profile.css';
@@ -32,7 +31,7 @@ const Profile = () => {
       console.log(values);
       try{
         const token = localStorage.getItem('token');
-        const response = await fetch("http://localhost:5000/api/auth/users/change-password",{
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/change-password`,{
         method:"POST",
         headers:{
           "Content-Type":"application/json",
@@ -76,6 +75,11 @@ const Profile = () => {
       }
       }
   })
+  useEffect(()=>{
+    if(!localStorage.getItem('token')){
+      navigate('/*');
+    }
+  },[navigate]);
 
   const handleLogout = () => {
     Swal.fire({

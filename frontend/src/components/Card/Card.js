@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
-import { useCart, useDispatchCart } from "../context/context";
+import { useCart, useDispatchCart } from "../../context/context";
 import './Card.css'
-import PaddingTop from "./PaddingTop";
 
 // import { Link } from "react-router-dom";
 const Card = (props) => {
   const dispatch = useDispatchCart();
-  const [qty, setQty] = useState(1);
+  const [qty] = useState(1);
   const [size, setSize] = useState("");
   const data = useCart();
   const foodItem = props.foodItem;

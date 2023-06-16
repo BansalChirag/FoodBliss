@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
-import { toast } from 'react-toastify';
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import './login.css'
-import Navbar from '../components/NavBar';
+import Navbar from '../../components/NavBar/NavBar';
 import styled from 'styled-components';
-import { ReactComponent as LoadingIcon } from '../components/assets/loading.svg';
-import PaddingTop from '../components/PaddingTop';
+import { ReactComponent as LoadingIcon } from '../../components/assets/loading.svg';
+import PaddingTop from '../../components/paddingTop/PaddingTop';
 import Swal from 'sweetalert2';
-
 
 const SignUpContainer = styled.div`
   max-width: 400px;
@@ -158,7 +155,7 @@ const SignUp = () => {
     validationSchema: signupSchema,
     onSubmit: async (values) => {
       try {
-        const response = await fetch("http://localhost:5000/api/auth/users/signup", {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/signup`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

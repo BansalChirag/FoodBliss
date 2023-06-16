@@ -1,5 +1,5 @@
 import React from 'react'
-import { useCart } from '../context/context'
+import { useCart } from '../../context/context'
 import { FiShoppingBag } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import './FloatingCart.css'

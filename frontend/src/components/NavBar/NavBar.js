@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { GoThreeBars } from 'react-icons/go';
 import { RxCross1 } from 'react-icons/rx';
 import './NavBar.css';
-import { useCart } from '../context/context';
-import { ReactComponent as CartIcon } from './assets/icons/cart.svg';
+import { useCart } from '../../context/context';
+import { ReactComponent as CartIcon } from '../assets/icons/cart.svg';
 const Navbar = () => {
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
   const data = useCart();

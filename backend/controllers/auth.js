@@ -1,4 +1,3 @@
-const express = require('express');
 const User = require('../models/userSchema');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -47,29 +46,33 @@ exports.userRegistration = async(req,res)=>{
 
 exports.login = async(req,res)=>{
     const{email,password} = req.body;
-    
     try{
         if(email && password){
             const isUser = await User.findOne({email})
-            // console.log(isUser);
-            const isMatched = await bcrypt.compare(password,isUser.password);
-            if(isUser && isMatched){
-                const token = jwt.sign({userId : isUser._id},
-                    "hellooooooooooooooooooooooooooooooo",
-                    {
-                        expiresIn: "2d",
-                    }
-                )
-                return res.status(200).json({
-                    success: true,
-                    message: "Login Successfully",
-                    token,
-                    name:isUser.name,
-                    email
-                });
-            }else{
-                return res.status(400).json({ success: false,message: "Invalid Credentials." });
+            if(isUser){
+              const isMatched = await bcrypt.compare(password,isUser.password);
+              if(isMatched){
+                  const token = jwt.sign({userId : isUser._id},
+                      "hellooooooooooooooooooooooooooooooo",
+                      {
+                          expiresIn: "2d",
+                      }
+                  )
+                  return res.status(200).json({
+                      success: true,
+                      message: "Login Successfully",
+                      token,
+                      name:isUser.name,
+                      email
+                  });
+              }else{
+                  return res.status(400).json({ success: false,message: "Invalid Credentials." });
+              }
             }
+            else{
+              return res.status(400).json({ success: false,message: "Invalid Credentials." });
+            }
+            
         }else{
             res.json({success: false,message:"All Fields are required"});
         }

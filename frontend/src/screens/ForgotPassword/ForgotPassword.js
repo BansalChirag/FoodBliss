@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
-import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Link} from "react-router-dom";
 import {useFormik} from 'formik';
 import * as yup from 'yup';
 import './forgotPassword.css'
-import Navbar from '../components/NavBar';
-import PaddingTop from '../components/PaddingTop';
+import Navbar from '../../components/NavBar/NavBar';
+import PaddingTop from '../../components/paddingTop/PaddingTop';
 import styled from 'styled-components';
-import { ReactComponent as LoadingIcon } from '../components/assets/loading.svg';
+import { ReactComponent as LoadingIcon } from '../../components/assets/loading.svg';
 import Swal from 'sweetalert2';
 
 const FormContainer = styled.div`
@@ -96,7 +95,7 @@ const ForgotPassword = () => {
       validationSchema:Schema,
       onSubmit : async(values)=>{
         try{
-          const response = await fetch("http://localhost:5000/api/auth/users/forget-password",{
+          const response = await fetch(`${process.env.REACT_APP_API_URL}/forget-password`,{
             method:'POST',
             headers: {
               'Content-Type': 'application/json',

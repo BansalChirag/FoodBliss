@@ -1,9 +1,9 @@
 import React from 'react';
-import PageNotFound from './images/404-page.jpg';
-import './ErrorPage.css';
+import Page404 from '../images/404-page.jpg';
+import './PageNotFound.css';
 import { useNavigate } from "react-router-dom";
 
-const ErrorPage = () => {
+const PageNotFound = () => {
   const navigate = useNavigate();
 
   const handleError = () => {
@@ -12,7 +12,7 @@ const ErrorPage = () => {
 
   return (
     <div className="error-page">
-      <img className="error-image" src={PageNotFound} alt="Page Not Found" />
+      <img className="error-image" src={Page404} alt="Page Not Found" />
       <div className="error-message">
         The page you are looking for doesn't exist.
       </div>
@@ -23,4 +23,4 @@ const ErrorPage = () => {
   );
 };
 
-export default ErrorPage;
+export default PageNotFound;

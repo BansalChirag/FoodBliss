@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
-import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import styled from 'styled-components';
-import { useUser } from '../context/context';
-import Navbar from '../components/NavBar';
-import { ReactComponent as LoadingIcon } from '../components/assets/loading.svg';
-import PaddingTop from '../components/PaddingTop';
+import { useUser } from '../../context/context';
+import Navbar from '../../components/NavBar/NavBar';
+import { ReactComponent as LoadingIcon } from '../../components/assets/loading.svg';
+import PaddingTop from '../../components/paddingTop/PaddingTop';
 import Swal from 'sweetalert2';
+// import { apiUrl } from '../config';
+
+
+// console.log(apiUrl)
+
+
 
 
 const FormContainer = styled.div`
@@ -156,7 +161,7 @@ const Login = () => {
 
     onSubmit: async (values) => {
       try {
-        const response = await fetch('http://localhost:5000/api/auth/users/login', {
+        const response = await fetch( `${process.env.REACT_APP_API_URL}/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -164,7 +169,8 @@ const Login = () => {
           body: JSON.stringify(values),
         });
         const data = await response.json();
-        if (data.success === false && data.message.includes('Invalid')) {
+        console.log("🚀 ~ file: Login.js:172 ~ onSubmit: ~ data:", data)
+        if (data.success === false || data.message.includes('Invalid')) {
           setIsLoading(true);
           setTimeout(() => {
             setIsLoading(false);
@@ -176,7 +182,19 @@ const Login = () => {
             )
             // toast.error('Invalid Credentials.');
           }, 2000);
-        } else {
+        }
+        // else if(data.success === false ){
+        //   setIsLoading(true);
+        //   setTimeout(() => {
+        //     setIsLoading(false);
+        //     Swal.fire({
+        //       icon: 'error',
+        //       title: 'Oops...',
+        //       text: 'Something went wrong! Please Try again later.',
+        //     })
+        //   }, 2000);
+        // }
+        else {
           setIsLoading(true);
           setTimeout(() => {
             setIsLoading(false);
@@ -218,7 +236,7 @@ const Login = () => {
           <OrText>or</OrText>
           <SignupLink to="/signup">create an account</SignupLink>
         </CreateAccount>
-        <Line class="style"></Line>
+        <Line className="style"></Line>
         <form onSubmit={handleSubmit}>
           <FormGroup>
             <Input

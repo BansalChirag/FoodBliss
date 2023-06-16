@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import Navbar from "../components/NavBar";
-import { useCart, useDispatchCart } from "../context/context";
-import { Link, useNavigate } from "react-router-dom";
+import { useCart, useDispatchCart } from "../../context/context";
+import {useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import "./Cart.css";
-import PaddingTop from "../components/PaddingTop";
-import { ReactComponent as LoadingIcon } from '../components/assets/loading.svg';
+
+import { ReactComponent as LoadingIcon } from '../../components/assets/loading.svg';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import DeleteIcon from '@mui/icons-material/Delete';
+import PaddingTop from "../../components/paddingTop/PaddingTop";
 
 
 const Cart = () => {
@@ -20,7 +20,7 @@ const Cart = () => {
     const userEmail = localStorage.getItem('userEmail');
     
     try {
-      const response = await fetch("http://localhost:5000/api/auth/users/cartData", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/cartData`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ const Cart = () => {
         }, 3000);
         
         // Send email to the user
-        const emailResponse = await fetch("http://localhost:5000/api/auth/users/sendEmail", {
+        const emailResponse = await fetch(`${process.env.api_url}/sendEmail`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
